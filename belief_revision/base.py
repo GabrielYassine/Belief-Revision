@@ -32,7 +32,7 @@ class BeliefBase:
         return [entry.formula for entry in self.entries]
 
     def sorted_by_priority_lowest_first(self) -> List[BeliefEntry]:
-        return sorted(self.entries, key=lambda entry: entry.priority)
+        return sorted(self.entries, key=lambda entry: (entry.priority, str(entry.formula)))
 
     def copy(self) -> "BeliefBase":
         return BeliefBase(entries=self.entries.copy())
