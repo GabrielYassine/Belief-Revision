@@ -2,10 +2,6 @@ from belief_revision import Atom, Not, Or, Imply, BeliefBase, revise, expand
 
 
 def logically_equivalent(base1, base2, atoms, reasoner):
-    """
-    Very small helper:
-    treat two bases as equivalent if they entail the same test formulas.
-    """
     test_formulas = list(atoms.values())
 
     for atom in list(atoms.values()):
@@ -56,10 +52,7 @@ def test_vacuity_postulate(res_reasoner, atoms):
 
 
 def test_inclusion_postulate_weak_version(res_reasoner, atoms):
-    """
-    A practical implementation-oriented version:
-    revised base should not contain completely unrelated beliefs out of nowhere.
-    """
+
     p = atoms["p"]
     q = atoms["q"]
 
@@ -80,7 +73,7 @@ def test_extensionality_postulate(res_reasoner, atoms):
     base.add(p, priority=3)
 
     phi = Imply(p, q)
-    psi = Or(Not(p), q)  # logically equivalent to p -> q
+    psi = Or(Not(p), q)
 
     revised_phi = revise(base, phi, res_reasoner, priority=100)
     revised_psi = revise(base, psi, res_reasoner, priority=100)

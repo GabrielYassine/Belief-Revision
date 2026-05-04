@@ -3,10 +3,6 @@ import pytest
 from belief_revision import (
     Atom,
     Imply,
-    Iff,
-    Not,
-    And,
-    Or,
     BeliefBase,
     TruthTableReasoner,
     ResolutionReasoner,
